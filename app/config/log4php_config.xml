@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <!--
+    <appender name="databaseAppender" class="LoggerAppenderPDO">
+        <param name="dsn" value="mysql:host=localhost;dbname=bmec" />
+        <param name="user" value="bmecLog" />
+        <param name="password" value="bmecLog" />
+        <param name="table" value="bmec_log" />
+    </appender>
+    -->
+    <appender name="echoAppender" class="LoggerAppenderEcho">
+        <layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%date{d.m.Y H:i:s,u} %-5level %message %file:%line %newline%ex" />
+        </layout>
+        <param name="htmlLineBreaks" value="true" />
+    </appender>
+    
+    <root>
+        <level value="DEBUG" />
+        <appender_ref ref="echoAppender" />
+    </root>
+</configuration>
