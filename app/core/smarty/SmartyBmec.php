@@ -17,6 +17,7 @@ class SmartyBmec extends Smarty {
         
         $this->assign("appName", "BMEC WebApp");
         
+        // echo bla
     }
 
 }
