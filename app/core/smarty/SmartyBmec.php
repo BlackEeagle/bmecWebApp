@@ -16,6 +16,7 @@ class SmartyBmec extends Smarty {
         $this->setConfigDir('smarty/configs');
         
         $this->assign("appName", "BMEC WebApp");
+        
     }
 
 }
