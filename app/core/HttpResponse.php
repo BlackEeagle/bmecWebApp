@@ -40,7 +40,7 @@ class HttpResponse {
             $this->body .= $this->smarty->fetch($this->smartyTemplateName);
         }
 
-        echo $this->body;
+        echo($this->body);
 
         $this->reset();
     }
