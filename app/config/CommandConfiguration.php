@@ -20,6 +20,9 @@ class CommandConfiguration {
         return $this->commandId;
     }
     
+    /**
+     * @return Command
+     */
     public function getCommand() {
         return $this->command;
     }

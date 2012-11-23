@@ -45,14 +45,26 @@ class FrontController {
         $this->commandConfig->getCommand()->execute($this->request, $this->response);
     }
     
+    /**
+     * 
+     * @return HttpRequest
+     */
     public function getHttpRequest() {
         return $this->request;
     }
     
+    /**
+     * 
+     * @return HttpResponse
+     */
     public function getHttpResponse() {
         return $this->response;
     }
     
+    /**
+     * 
+     * @return CommandConfiguration
+     */
     public function getCommandConfig() {
         return $this->commandConfig;
     }

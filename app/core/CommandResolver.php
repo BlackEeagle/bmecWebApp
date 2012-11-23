@@ -21,6 +21,12 @@ class CommandResolver {
         $this->defaultCommand = $defaultCommand;
     }
 
+    /**
+     * 
+     * @param HttpRequest $request
+     * @return CommandConfiguration
+     * @throws Exception
+     */
     public function getCommand(HttpRequest $request) {
         $requestedCommandConfig = null;
 
