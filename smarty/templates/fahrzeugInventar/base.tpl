@@ -6,7 +6,7 @@
 {include file="fahrzeugInventar/navigation.tpl"}
 {/block}
 
-{block name="title"}Fahrzeug-Inventar{/block}
+{block name="title"}{i18nLabel key="fzInventar.topNavigation"}{/block}
 
 {block name="script"}
 <script type="text/javascript" src="js/fahrzeugInventar.js"></script>

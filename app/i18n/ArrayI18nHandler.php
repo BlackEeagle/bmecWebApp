@@ -5,22 +5,20 @@
  *
  * @author Thom
  */
-class I18nHandler implements I18nHandler {
+class ArrayI18nHandler implements I18nHandler {
 
     private $texts = null;
-    private $log;
-    private static $instance = null;
-
-    public function getInstance() {
-        if(self::$instance === null){
-            self::$instance = new I18nHandler();
-        }
-    }
+    private $log = null;
     
-    private function __construct() {
+    public function __construct() {
         $this->generateTexts();
+        $this->logger = Logger::getLogger("main");
     }
     
+    /**
+     * 
+     * @return array
+     */
     public function supportedLanguages() {
         return array("de");
     }
@@ -65,8 +63,25 @@ class I18nHandler implements I18nHandler {
         }
     }
 
-    public function getText($key, $lang, $default) {
+    public function getText($key, $lang = "de", $default = null) {
         
+        if($default === null) {
+            $default = "!! ".$key." !!";
+        }
+        
+        $langArr = ArrayUtil::dot($this->texts, $key);
+        
+        if(isset($langArr[$lang])) {
+            $text = $langArr[$lang];
+        }
+        else if(isset($langArr["de"])) {
+            $text = $langArr["de"];
+        }
+        else {
+            $text = $default;
+        }
+        
+        return $text;
     }
 
 }
