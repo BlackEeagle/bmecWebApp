@@ -6,6 +6,11 @@
  * @author Thom
  */
 class NavigationHelper {
+    
+    /*-
+     * USER
+     */
+   const USER_LOGIN = "login";
    
     /*-
      *  FAHRZEUG INVENTAR

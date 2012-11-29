@@ -35,7 +35,21 @@ class ArrayI18nHandler implements I18nHandler {
                         "de" => "BMEC"
                     ),
                     "login" => array(
-                        "de" => "Login"
+                        "title" => array(
+                            "de" => "Login"
+                        ),
+                        "username" => array(
+                            "de" => "Benutzername"
+                        ),
+                        "password" => array(
+                            "de" => "Passwort"
+                        ),
+                        "button" => array(
+                            "de" => "Login"
+                        ),
+                        "logout" => array(
+                            "de" => "Logout"
+                        )
                     )
                 ),
                 "fzInventar" => array(

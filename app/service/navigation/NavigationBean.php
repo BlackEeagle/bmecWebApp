@@ -11,7 +11,7 @@ class NavigationBean {
     
     private $subLevel;
     
-   public function __construct($mainLevel, $subLevel) {
+   public function __construct($mainLevel = "", $subLevel = "") {
        $this->mainLevel = $mainLevel;
        $this->subLevel = $subLevel;
    }

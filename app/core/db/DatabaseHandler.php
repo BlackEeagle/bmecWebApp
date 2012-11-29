@@ -12,6 +12,9 @@ class DatabaseHandler {
     private $dbHandler;
     private $logger;
 
+    /**
+     * @return DatabaseHandler
+     */
     public static function getInstance() {
         if (self::$instance === null) {
             self::$instance = new DatabaseHandler();
@@ -40,10 +43,16 @@ class DatabaseHandler {
         }
     }
 
+    /**
+     * @return SelectStatement
+     */
     public function createSelectStatement() {
         return new SelectStatement($this->dbHandler);
     }
     
+    /**
+     * @return UpdateStatement
+     */
     public function createUpdateStatement() {
         return new UpdateStatement($this->dbHandler);
     }

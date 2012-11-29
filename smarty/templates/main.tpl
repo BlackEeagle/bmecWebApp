@@ -49,18 +49,23 @@
                             <li data-nav-name="fzInventar"><a href="?cmd=1">{i18nLabel key="fzInventar.topNavigation"}</a></li>
                         </ul>
                         
+                        
                         <ul class="nav nav-pills pull-right">
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="icon-user icon-black"></i> Username
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Profile</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Sign Out</a></li>
-                                </ul>
-                            </li>
+                            {if $security->isLoggedIn()}
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="icon-user icon-black"></i> {$security->getUser()->getName()}
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Profile</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="?cmd=4">{i18nLabel key="bmecWebApp.login.logout"}</a></li>
+                                    </ul>
+                                </li>
+                            {else}
+                                <li data-nav-name="login"><a href="?cmd=2">{i18nLabel key="bmecWebApp.login.title"}</a></li>
+                            {/if}
                         </ul><!--/.btn-group -->
                     </div><!--/.nav-collapse -->
                 </div>
