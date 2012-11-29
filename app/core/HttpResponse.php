@@ -53,6 +53,9 @@ class HttpResponse {
         $this->smartyTemplateName = "";
     }
 
+    /**
+     * @return Smarty
+     */
     public function getSmarty() {
         return $this->smarty;
     }
@@ -61,6 +64,9 @@ class HttpResponse {
         $this->smartyTemplateName = $tpl;
     }
 
+    /**
+     * @return string
+     */
     public function getSmartyTemplateName() {
         return $this->smartyTemplateName;
     }

@@ -13,10 +13,16 @@ class HttpRequest {
         $this->parameters = $_REQUEST;
     }
 
+    /**
+     * @return boolean
+     */
     public function issetParameter($name) {
         return isset($this->parameters[$name]);
     }
 
+    /**
+     * @return string
+     */
     public function getParameter($name) {
         if ($this->issetParameter($name)) {
             return $this->parameters[$name];
@@ -29,6 +35,9 @@ class HttpRequest {
         return array_keys($this->parameters);
     }
 
+    /**
+     * @return string
+     */
     public function getHeader($name) {
         $name = "HTTP_" . strtoupper(str_replace("-", "_", $name));
 

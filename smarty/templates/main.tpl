@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>BMEC WebApp - {block name="title"}{/block}</title>
+        <title>{i18nLabel key="bmecWebApp.title"} - {block name="title"}{/block}</title>
         <meta name="description" content="BMEC WebApp">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -36,7 +36,7 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner" id="topNav">
                 <div class="container-fluid">
-                    <a class="brand" href="?">BMEC WebApp</a>
+                    <a class="brand" href="?">{i18nLabel key="bmecWebApp.title"}</a>
 
                      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
@@ -46,21 +46,26 @@
                     
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li data-nav-name="fzInventar"><a href="?cmd=1">Fahrzeug-Inventar</a></li>
+                            <li data-nav-name="fzInventar"><a href="?cmd=1">{i18nLabel key="fzInventar.topNavigation"}</a></li>
                         </ul>
                         
+                        
                         <ul class="nav nav-pills pull-right">
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="icon-user icon-black"></i> Username
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Profile</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Sign Out</a></li>
-                                </ul>
-                            </li>
+                            {if $security->isLoggedIn()}
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="icon-user icon-black"></i> {$security->getUser()->getName()}
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Profile</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="?cmd=4">{i18nLabel key="bmecWebApp.login.logout"}</a></li>
+                                    </ul>
+                                </li>
+                            {else}
+                                <li data-nav-name="login"><a href="?cmd=2">{i18nLabel key="bmecWebApp.login.title"}</a></li>
+                            {/if}
                         </ul><!--/.btn-group -->
                     </div><!--/.nav-collapse -->
                 </div>
@@ -80,7 +85,7 @@
             <hr>
 
             <footer>
-                <p>&copy; <a href="http://www.bmec.ch" target="_blank">BMEC</a> 2012</p>
+                <p>&copy; <a href="http://www.bmec.ch" target="_blank">{i18nLabel key="bmecWebApp.bmec"}</a> 2012</p>
             </footer>
 
         </div><!--/.fluid-container-->

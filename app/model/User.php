@@ -4,7 +4,7 @@
  *
  * @author Thom
  */
-class User {
+class User implements Model {
     
     private $user_id;
     

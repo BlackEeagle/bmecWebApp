@@ -11,7 +11,11 @@ class CommandConfigurationHandler {
 
     public static function init() {
         self::$configurations = [
-            new CommandConfiguration(1, new WelcomeCommand())
+            new CommandConfiguration(1, new WelcomeCommand()),
+            // User
+            new CommandConfiguration(2, new ShowLoginFormCommand()),
+            new CommandConfiguration(3, new DoLoginCommand()),
+            new CommandConfiguration(4, new DoLogoutCommand())
         ];
     }
 

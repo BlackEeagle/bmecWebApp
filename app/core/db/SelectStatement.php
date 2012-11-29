@@ -7,22 +7,17 @@
  */
 class SelectStatement extends AbstractStatement {
 
-    private $modelClass = null;
-
-    public function setModelClass($modelClass) {
-        $this->modelClass = $modelClass;
-    }
-
-    public function execute(array $params = null) {
-
-        if ($this->modelClass === null) {
-            throw new Exception("model class required!");
-        }
+    public function execute(array $params = null, $model = null) {
 
         try {
             $this->executeStatement($params);
 
-            $result = $this->statement->fetchAll(PDO::FETCH_CLASS, $this->modelClass);
+            if($model !== null){
+                $result = $this->statement->fetchAll(PDO::FETCH_CLASS, $model);    
+            }
+            else {
+                $result = $this->statement->fetchAll(PDO::FETCH_ASSOC);    
+            }
         } catch (PDOException $e) {
             $this->logger->error($e->getMessage(), $e);
         }

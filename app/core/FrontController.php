@@ -26,6 +26,7 @@ class FrontController {
         
         $filters = array(
             new SessionFilter(),
+            new SecurityFilter(),
             new NavigationFilter()
         );
 
