@@ -7,15 +7,35 @@
  */
 class CommandConfiguration {
 
+    /**
+     * @var int 
+     */
     private $commandId;
 
-    private $command;
+    /**
+     * @var string 
+     */
+    private $commandClassName;
     
-    public function __construct($commandId, Command $command) {
+    /**
+     * @var string
+     */
+    private $methodName;
+    
+    /**
+     * @var Command
+     */
+    private $commandInstance;
+    
+    public function __construct($commandId, $commandClassName, $methodName) {
         $this->commandId = $commandId;
-        $this->command = $command;
+        $this->commandClassName = $commandClassName;
+        $this->methodName = $methodName;
     }
-    
+        
+    /**
+     * @return int
+     */
     public function getCommandId() {
         return $this->commandId;
     }
@@ -23,8 +43,27 @@ class CommandConfiguration {
     /**
      * @return Command
      */
-    public function getCommand() {
-        return $this->command;
+    public function getCommandInstance() {
+        
+        if(!$this->commandInstance) {
+            $this->commandInstance = new $this->commandClassName();
+        }
+        
+        return $this->commandInstance;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getCommandClassName()  {
+        return $this->commandClassName;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getMethodName() {
+        return $this->methodName;
     }
 }
 

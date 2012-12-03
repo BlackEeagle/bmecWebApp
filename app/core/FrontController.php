@@ -7,12 +7,21 @@
  */
 class FrontController {
 
+    /**
+     * @var HttpRequest
+     */
     private $request;
     
+    /**
+     * @var HttpResponse 
+     */
     private $response;
     
+    /**
+     * @var CommandConfiguration 
+     */
     private $commandConfig;
-    
+
     public function handleRequest() {
 
         $this->request = new HttpRequest();
@@ -23,7 +32,7 @@ class FrontController {
         $commandResolver = new CommandResolver();
 
         $this->commandConfig = $commandResolver->getCommand($this->request);
-        
+
         $filters = array(
             new SessionFilter(),
             new SecurityFilter(),
@@ -35,40 +44,43 @@ class FrontController {
 
     private function execute($filters) {
 
-       $filterInvocation = new FilterInvocation($filters, $this);
+        $filterInvocation = new FilterInvocation($filters, $this);
 
-       $filterInvocation->invokeFilters();
-       
-       $this->response->flush();
+        $filterInvocation->invokeFilters();
+
+        $this->response->flush();
     }
-    
+
     public function execteCommand() {
-        $this->commandConfig->getCommand()->execute($this->request, $this->response);
+        $commandInstance = $this->commandConfig->getCommandInstance();
+        $methodName = $this->commandConfig->getMethodName();
+
+        $commandInstance->init($this->request, $this->response);
+
+        $commandInstance->$methodName();
     }
-    
+
     /**
-     * 
      * @return HttpRequest
      */
     public function getHttpRequest() {
         return $this->request;
     }
-    
+
     /**
-     * 
      * @return HttpResponse
      */
     public function getHttpResponse() {
         return $this->response;
     }
-    
+
     /**
-     * 
      * @return CommandConfiguration
      */
     public function getCommandConfig() {
         return $this->commandConfig;
     }
+
 }
 
 ?>
