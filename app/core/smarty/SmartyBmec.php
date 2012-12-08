@@ -18,8 +18,6 @@ class SmartyBmec extends Smarty {
         $this->assign("appName", "BMEC WebApp");
         
         $this->registerPlugin("function", "i18nLabel", array(new SmartyI18nPlugin(), "i18nLabel"));
-        
-        // echo bla
     }
 
 }

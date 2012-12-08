@@ -36,7 +36,8 @@ class FrontController {
         $filters = array(
             new SessionFilter(),
             new SecurityFilter(),
-            new NavigationFilter()
+            new NavigationFilter(),
+            new GuiMessageFilter()
         );
 
         $this->execute($filters);

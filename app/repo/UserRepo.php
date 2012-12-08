@@ -25,9 +25,6 @@ class UserRepo {
         $stmt->prepare($sql);
         $result = $stmt->execute($params, "User");
         
-        $log = Logger::getLogger("main");
-        $log->debug($result);
-        
         if(empty($result) === false) {
             return $result[0];
         }

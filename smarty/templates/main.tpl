@@ -78,6 +78,7 @@
                    {block name="sidebarNav"}{/block}
                 </div><!--/span-->
                 <div class="span9">
+                    {include file="includes/guiMessage/guiMessages.tpl"}
                     {block name="mainContent"}{/block}
                 </div><!--/span-->
             </div><!--/row-->
@@ -99,7 +100,7 @@
             var mainLevel = "{$navBean->getMainLevel()}";
             
             if(mainLevel !== "") {
-                $("#topNav ul.nav li").each(function(i) {
+                $("#topNav ul.nav li").each(function() {
                     var navName = $(this).data("nav-name");
                     if(navName != undefined && navName === mainLevel) {
                         $(this).addClass("active");
@@ -107,9 +108,23 @@
                     }
                 });
             }
+            
+            // Validation-Error
+            if(typeof validationErrorFieldNames !== "undefined") {
+                for(var i = 0; i < validationErrorFieldNames.length; i++) {
+                    var fieldName  = validationErrorFieldNames[i];
+
+                    $("input[name='" + fieldName + "']").closest(".control-group").addClass("warning");
+                }
+            }
         });
         
         </script>
+        {if $guiMsgHandler->hasGuiMessageOfType("fieldValidationError")}
+            <script type="text/javascript">
+                var validationErrorFieldNames = [ "{$guiMsgHandler->getFieldValidationErrorFieldNamesConcat()}" ];
+            </script>
+        {/if}
         {block name="script"}{/block}
     </body>
 </html>
