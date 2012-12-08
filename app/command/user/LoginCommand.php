@@ -39,6 +39,10 @@ class LoginCommand extends AbstractCommand {
             $msgHandler->addGuiMessage(new GuiMessage(GuiMessageType::FIELD_VALIDATION_ERROR, "bmecWebApp.login.validation.password", "password"));
         }
 
+        /*-
+         * LOGIN
+         */
+        
         if ($msgHandler->hasValidationErrors() === false) {
             $secService = SecurityService::getInstance();
 
@@ -49,6 +53,10 @@ class LoginCommand extends AbstractCommand {
             }
         }
 
+        /*-
+         * RESPONSE
+         */
+        
         if ($msgHandler->hasValidationErrors() === false) {
             $this->response->addHeader("Location", "?cmd=1");
         } else {
