@@ -11,7 +11,7 @@
  */
 interface Command {
 
-    public function execute(HttpRequest $request, HttpResponse $response);
+    public function init(HttpRequest $request, HttpResponse $response);
     
     public function getNavigationBean();
 }

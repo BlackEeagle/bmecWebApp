@@ -49,24 +49,7 @@
                             <li data-nav-name="fzInventar"><a href="?cmd=1">{i18nLabel key="fzInventar.topNavigation"}</a></li>
                         </ul>
                         
-                        
-                        <ul class="nav nav-pills pull-right">
-                            {if $security->isLoggedIn()}
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                        <i class="icon-user icon-black"></i> {$security->getUser()->getName()}
-                                        <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Profile</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="?cmd=4">{i18nLabel key="bmecWebApp.login.logout"}</a></li>
-                                    </ul>
-                                </li>
-                            {else}
-                                <li data-nav-name="login"><a href="?cmd=2">{i18nLabel key="bmecWebApp.login.title"}</a></li>
-                            {/if}
-                        </ul><!--/.btn-group -->
+                        {include file="includes/topNaviUserDropDown.tpl"}
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
@@ -78,6 +61,7 @@
                    {block name="sidebarNav"}{/block}
                 </div><!--/span-->
                 <div class="span9">
+                    {include file="includes/guiMessage/guiMessages.tpl"}
                     {block name="mainContent"}{/block}
                 </div><!--/span-->
             </div><!--/row-->
@@ -99,7 +83,7 @@
             var mainLevel = "{$navBean->getMainLevel()}";
             
             if(mainLevel !== "") {
-                $("#topNav ul.nav li").each(function(i) {
+                $("#topNav ul.nav li").each(function() {
                     var navName = $(this).data("nav-name");
                     if(navName != undefined && navName === mainLevel) {
                         $(this).addClass("active");
@@ -107,9 +91,23 @@
                     }
                 });
             }
+            
+            // Validation-Error
+            if(typeof validationErrorFieldNames !== "undefined") {
+                for(var i = 0; i < validationErrorFieldNames.length; i++) {
+                    var fieldName  = validationErrorFieldNames[i];
+
+                    $("input[name='" + fieldName + "']").closest(".control-group").addClass("warning");
+                }
+            }
         });
         
         </script>
+        {if $guiMsgHandler->hasGuiMessageOfType("fieldValidationError")}
+            <script type="text/javascript">
+                var validationErrorFieldNames = [ "{$guiMsgHandler->getFieldValidationErrorFieldNamesConcat()}" ];
+            </script>
+        {/if}
         {block name="script"}{/block}
     </body>
 </html>

@@ -7,15 +7,18 @@
  */
 class CommandConfigurationHandler {
 
+    /**
+     * @var array 
+     */
     private static $configurations;
 
     public static function init() {
         self::$configurations = [
-            new CommandConfiguration(1, new WelcomeCommand()),
-            // User
-            new CommandConfiguration(2, new ShowLoginFormCommand()),
-            new CommandConfiguration(3, new DoLoginCommand()),
-            new CommandConfiguration(4, new DoLogoutCommand())
+            new CommandConfiguration(1, "WelcomeCommand","home"),
+            // Login
+            new CommandConfiguration(2, "LoginCommand", "showForm"),
+            new CommandConfiguration(3, "LoginCommand", "doLogin"),
+            new CommandConfiguration(4, "LoginCommand", "doLogout")
         ];
     }
 

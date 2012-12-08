@@ -11,7 +11,7 @@ class NavigationFilter implements Filter {
         
         $invocation->invoke($invocation);
         
-        $response->getSmarty()->assign("navBean", $commandConfiguration->getCommand()->getNavigationBean());
+        $response->getSmarty()->assign("guiMsgHandler", GuiMessageHandler::getInstance());
     }
 }
 

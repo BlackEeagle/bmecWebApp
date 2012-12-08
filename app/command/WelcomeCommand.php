@@ -5,18 +5,12 @@
  *
  * @author Thom
  */
-class WelcomeCommand implements Command {
+class WelcomeCommand extends AbstractCommand {
 
-    public function execute(HttpRequest $request, HttpResponse $response) {
+    public function home() {
+        $this->navigationBean = new NavigationBean(NavigationHelper::FZ_INVENTAR_TOP, NavigationHelper::FZ_INVENTAR_SUB_START);
         
-       $response->setSmartyTemplateName("fahrzeugInventar/start.tpl");
-    }
-    
-    /**
-     * @return NavigationBean
-     */
-    public function getNavigationBean() {        
-        return new NavigationBean(NavigationHelper::FZ_INVENTAR_TOP, NavigationHelper::FZ_INVENTAR_SUB_START);
+        $this->response->setSmartyTemplateName("fahrzeugInventar/start.tpl");
     }
 }
 
