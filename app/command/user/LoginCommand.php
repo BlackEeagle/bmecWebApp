@@ -11,6 +11,8 @@ class LoginCommand extends AbstractCommand {
 
         $this->navigationBean = new NavigationBean(NavigationHelper::USER_LOGIN);
 
+        $this->response->getSmarty()->assign("username");
+        
         $this->response->setSmartyTemplateName("user/login.tpl");
     }
 
@@ -62,6 +64,7 @@ class LoginCommand extends AbstractCommand {
         } else {
             $this->navigationBean = new NavigationBean(NavigationHelper::USER_LOGIN);
 
+            $this->response->getSmarty()->assign("username", $this->request->getParameter("username"));
             $this->response->setSmartyTemplateName("user/login.tpl");
         }
     }

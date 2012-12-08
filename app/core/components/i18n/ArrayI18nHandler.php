@@ -53,6 +53,15 @@ class ArrayI18nHandler implements I18nHandler {
                 "bmecWebApp.login.logout" => array(
                     "de" => "Logout"
                 ),
+                "bmecWebApp.login.validation.credentials" => array(
+                    "de" => "Die angegebene Kombination Benutzername & Passwort ist ungültigt."
+                ),
+                "bmecWebApp.login.validation.username" => array(
+                    "de" => "Bitte gib deinen Benutzernamen an."
+                ),
+                "bmecWebApp.login.validation.password" => array(
+                    "de" => "Bitte gib dein Passwort an."
+                ),
                 
                 /*-
                  * FAHRZEUG-INVENTAR
