@@ -38,6 +38,9 @@ class ArrayI18nHandler implements I18nHandler {
                 "bmecWebApp.bmec" => array(
                     "de" => "BMEC"
                 ),
+                "bmecWebApp.button.speichern" => array(
+                    "de" => "Speichern"
+                ),
                 "bmecWebApp.login.title" => array(
                     "de" => "Login"
                 ),
@@ -73,14 +76,41 @@ class ArrayI18nHandler implements I18nHandler {
                 "fzInventar.sideNavigation.title" => array(
                     "de" => "FAHRZEUG-INVENTAR"
                 ),
-                "fzInventar.sideNavigation.start" => array(
-                    "de" => "Start"
+                "fzInventar.sideNavigation.vorbild" => array(
+                    "de" => "Vorbild"
                 ),
                 "fzInventar.sideNavigation.start.title" => array(
                     "de" => "Hello world"
                 ),
                 "fzInventar.sideNavigation.start.text" => array(
                     "de" => "foobar"
+                ),
+                "fzInventar.vorbild.title" => array(
+                    "de" => "Vorbild"
+                ),
+                "fzInventar.vorbild.evu" => array(
+                    "de" => "EVU"
+                ),
+                "fzInventar.vorbild.gattung" => array(
+                    "de" => "Gattung"
+                ),
+                "fzInventar.vorbild.typ" => array(
+                    "de" => "Typ"
+                ),
+                "fzInventar.vorbild.serie" => array(
+                    "de" => "Serie"
+                ),
+                "fzInventar.vorbild.farbe" => array(
+                    "de" => "Farbe"
+                ),
+                "fzInventar.vorbild.geschwindigkeit" => array(
+                    "de" => "Geschwindigkeit (km/h)"
+                ),
+                "fzInventar.vorbild.achsen" => array(
+                    "de" => "Achsen"
+                ),
+                "fzInventar.vorbild.epoche" => array(
+                    "de" => "Epoche"
                 )
             );
         }

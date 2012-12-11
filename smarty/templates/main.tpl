@@ -36,7 +36,7 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner" id="topNav">
                 <div class="container-fluid">
-                    <a class="brand" href="?">{i18nLabel key="bmecWebApp.title"}</a>
+                    <a class="brand" href="?cmd=1">{i18nLabel key="bmecWebApp.title"}</a>
 
                      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
@@ -46,7 +46,9 @@
                     
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li data-nav-name="fzInventar"><a href="?cmd=1">{i18nLabel key="fzInventar.topNavigation"}</a></li>
+                            {if $fzDbSecurity->isAllowedForFzDb()}
+                                <li data-nav-name="fzInventar"><a href="?cmd=5">{i18nLabel key="fzInventar.topNavigation"}</a></li>
+                            {/if}
                         </ul>
                         
                         {include file="includes/topNaviUserDropDown.tpl"}

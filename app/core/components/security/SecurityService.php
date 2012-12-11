@@ -5,14 +5,26 @@
  *
  * @author Thom
  */
-class SecurityService {
+class SecurityService implements SecurityBeanCreator {
     
+    /**
+     * @var SecurityService 
+     */
     private static $instance;
     
+    /**
+     * @var User 
+     */
     private $currentUser;
     
+    /**
+     * @var array 
+     */
+    private $roles;
+    
     private function __construct() {
-        
+        $this->roles = null;
+        $this->currentUser = null;
     }
     
     /**
@@ -38,13 +50,18 @@ class SecurityService {
      * @return array
      */
     public function getUserRoles() {
-        $roles = array();
         
-        if($this->isUserLoggedIn()) {
-            
+        if($this->roles === null) {
+            $this->roles = array();
+
+            if($this->isUserLoggedIn()) {
+                $repo = new UserRepo();
+                
+                $this->roles = $repo->findUserRolesById($_SESSION["user_id"]);
+            }
         }
         
-        return $roles;
+        return $this->roles;
     }
     
     public function logout() {
@@ -97,6 +114,14 @@ class SecurityService {
         
         $repo = new UserRepo();
         return $repo->findUserByNameAndPass($user, $pass);
+    }
+    
+    /**
+     * @return BaseSecurityBean
+     */
+    public function createSecurityBean() {
+        
+        return new BaseSecurityBean($this->isUserLoggedIn(), $this->getCurrentUser());
     }
 }
 

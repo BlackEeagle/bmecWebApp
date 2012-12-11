@@ -7,6 +7,11 @@
  */
 class SelectStatement extends AbstractStatement {
 
+    /**
+     * @param array $params
+     * @param string $model
+     * @return array
+     */
     public function execute(array $params = null, $model = null) {
 
         try {

@@ -68,7 +68,10 @@ class LoginCommand extends AbstractCommand {
             $this->response->setSmartyTemplateName("user/login.tpl");
         }
     }
-
+    
+    public function getRequiredRoles($method) {
+        return array();
+    }
 }
 
 ?>

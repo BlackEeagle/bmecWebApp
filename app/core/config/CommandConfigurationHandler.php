@@ -18,7 +18,10 @@ class CommandConfigurationHandler {
             // Login
             new CommandConfiguration(2, "LoginCommand", "showForm"),
             new CommandConfiguration(3, "LoginCommand", "doLogin"),
-            new CommandConfiguration(4, "LoginCommand", "doLogout")
+            new CommandConfiguration(4, "LoginCommand", "doLogout"),
+            // FzDb
+            new CommandConfiguration(5, "FzDbWelcomeCommand", "welcome"),
+            new CommandConfiguration(6, "FzDbVorbildCommand", "blank")
         ];
     }
 
