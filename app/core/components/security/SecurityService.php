@@ -123,6 +123,25 @@ class SecurityService implements SecurityBeanCreator {
         
         return new BaseSecurityBean($this->isUserLoggedIn(), $this->getCurrentUser());
     }
+    
+    /**
+     * @param array $requestetRoles
+     * @return boolean
+     */
+    public function isUserInRoles(array $requestetRoles) {
+        
+        $userRoles = $this->getUserRoles();
+        $isInRoles = false;
+        
+        foreach($requestetRoles as $role) {
+            if(in_array($role, $userRoles)) {
+                $isInRoles = true;
+                break;
+            }
+        }
+        
+        return $isInRoles;
+    }
 }
 
 ?>

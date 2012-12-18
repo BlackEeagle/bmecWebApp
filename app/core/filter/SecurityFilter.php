@@ -38,17 +38,10 @@ class SecurityFilter implements Filter {
 
         if ($secService->isUserLoggedIn()) {
 
-            if (!empty($requiredRoles)) {
-                $userRoles = $secService->getUserRoles();
-
-                foreach ($requiredRoles as $role) {
-                    if (in_array($role, $userRoles)) {
-                        $allowed = true;
-                        break;
-                    }
-                }
-            } else {
+            if (empty($requiredRoles)) {
                 $allowed = true;
+            } else {
+                $allowed = $secService->isUserInRoles($requiredRoles);
             }
         } else if (empty($requiredRoles)) {
             $allowed = true;

@@ -10,10 +10,6 @@ class User implements Model {
     
     private $user_name;
     
-    public function __construct() {
-        
-    }
-    
     public function getName() {
         return $this->user_name;
     }

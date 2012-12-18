@@ -5,13 +5,7 @@
  *
  * @author Thom
  */
-class UserRepo {
-
-    private $dbHandler;
-
-    public function __construct() {
-        $this->dbHandler = DatabaseHandler::getInstance();
-    }
+class UserRepo extends AbstractRepo {
 
     /**
      * @return User

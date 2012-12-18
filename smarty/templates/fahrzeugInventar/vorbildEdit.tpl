@@ -5,16 +5,14 @@
 {block name="mainContent"}
 <fieldset>
     <legend>{i18nLabel key="fzInventar.vorbild.title"}</legend>
-    <form class="form-horizontal" action="?" method="post">
+    <form class="form-horizontal" action="?cmd=7" method="post">
+        <inpu type="hidden" name="id" value="" />
         <div class="row-fluid">
             <div class="span6">
                 <div class="control-group">
                     <label class="control-label" for="selectEvu">{i18nLabel key="fzInventar.vorbild.evu"}</label>
                     <div class="controls">
-                        <select name="evu" id="selectEvu">
-                            <option value="1">SBB</option>
-                            <option value="2">DB</option>
-                        </select>
+                        {htmlSelect name="evu" id="selectEvu" list=$evuList}
                     </div>
                 </div>
             </div>
@@ -22,9 +20,7 @@
                 <div class="control-group">
                     <label class="control-label" for="selectGattung">{i18nLabel key="fzInventar.vorbild.gattung"}</label>
                     <div class="controls">
-                        <select name="gattung" id="selectGattung">
-                            <option value="1">FOO</option>
-                        </select>
+                        {htmlSelect name="gattung" id="selectGattung" list=$gattungList}
                     </div>
                 </div>
             </div>
@@ -34,7 +30,7 @@
                 <div class="control-group">
                     <label class="control-label" for="inputTyp">{i18nLabel key="fzInventar.vorbild.typ"}</label>
                     <div class="controls">
-                        <input type="text" id="inputTyp" placeholder="{i18nLabel key="fzInventar.vorbild.typ"}" name="typ" />
+                        {htmlInputText id="inputTyp" placeholderKey="fzInventar.vorbild.typ" name="typ"}
                     </div>
                 </div>
             </div>
@@ -42,7 +38,7 @@
                 <div class="control-group">
                     <label class="control-label" for="inputSerie">{i18nLabel key="fzInventar.vorbild.serie"}</label>
                     <div class="controls">
-                        <input type="text" id="inputSerie" placeholder="{i18nLabel key="fzInventar.vorbild.serie"}" name="serie" />
+                        {htmlInputText id="inputSerie" placeholderKey="fzInventar.vorbild.serie" name="serie"}
                     </div>
                 </div>
             </div>
@@ -52,7 +48,7 @@
                 <div class="control-group">
                     <label class="control-label" for="inputFarbe">{i18nLabel key="fzInventar.vorbild.farbe"}</label>
                     <div class="controls">
-                        <input type="text" id="inputFarbe" placeholder="{i18nLabel key="fzInventar.vorbild.farbe"}" name="farbe" />
+                        {htmlInputText id="inputFarbe" placeholderKey="fzInventar.vorbild.farbe" name="farbe"}
                     </div>
                 </div>
             </div>
@@ -60,7 +56,7 @@
                 <div class="control-group">
                     <label class="control-label" for="inputGeschwindigkeit">{i18nLabel key="fzInventar.vorbild.geschwindigkeit"}</label>
                     <div class="controls">
-                        <input type="text" id="inputGeschwindigkeit" placeholder="{i18nLabel key="fzInventar.vorbild.geschwindigkeit"}" name="geschwindigkeit" />
+                        {htmlInputText id="inputGeschwindigkeit" placeholderKey="fzInventar.vorbild.geschwindigkeit" name="geschwindigkeit"}
                     </div>
                 </div>
             </div>
@@ -70,7 +66,7 @@
                 <div class="control-group">
                     <label class="control-label" for="inputAchsen">{i18nLabel key="fzInventar.vorbild.achsen"}</label>
                     <div class="controls">
-                        <input type="text" id="inputAchsen" placeholder="{i18nLabel key="fzInventar.vorbild.achsen"}" name="achsen" />
+                        {htmlInputText id="inputAchsen" placeholderKey="fzInventar.vorbild.achsen" name="achsen"}
                     </div>
                 </div>
             </div>
@@ -78,9 +74,7 @@
                 <div class="control-group">
                     <label class="control-label" for="selectEpoche">{i18nLabel key="fzInventar.vorbild.epoche"}</label>
                     <div class="controls">
-                        <select name="gattung" id="selectEpoche">
-                            <option value="1">FOO</option>
-                        </select>
+                        {htmlSelect name="epoche" id="selectEpoche" list=$epocheList}
                     </div>
                 </div>
             </div>

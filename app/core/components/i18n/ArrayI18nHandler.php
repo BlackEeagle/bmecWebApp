@@ -5,14 +5,14 @@
  *
  * @author Thom
  */
-class ArrayI18nHandler implements I18nHandler {
+class ArrayI18nHandler extends AbstractI18nHandler {
 
     private $texts = null;
-    private $log = null;
     
     public function __construct() {
+        parent::__construct();
+
         $this->generateTexts();
-        $this->logger = Logger::getLogger("main");
     }
     
     /**
@@ -116,7 +116,7 @@ class ArrayI18nHandler implements I18nHandler {
         }
     }
 
-    public function getText($key, $lang = "de", $default = null) {
+    public function getTextForLang($key, $lang = "de", $default = null) {
         
         if($default === null) {
             $default = "!! ".$key." !!";

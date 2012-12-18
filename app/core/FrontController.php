@@ -45,6 +45,9 @@ class FrontController {
 
     private function execute($filters) {
 
+        $commandInstance = $this->commandConfig->createCommandInstance();
+        $commandInstance->init($this->request, $this->response);
+        
         $filterInvocation = new FilterInvocation($filters, $this);
 
         $filterInvocation->invokeFilters();
@@ -52,13 +55,10 @@ class FrontController {
         $this->response->flush();
     }
 
-    public function execteCommand() {
-        $commandInstance = $this->commandConfig->getCommandInstance();
+    public function executeCommand() {
+        
         $methodName = $this->commandConfig->getMethodName();
-
-        $commandInstance->init($this->request, $this->response);
-
-        $commandInstance->$methodName();
+        $this->commandConfig->getCommandInstance()->$methodName();
     }
 
     /**

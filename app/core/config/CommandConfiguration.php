@@ -45,9 +45,15 @@ class CommandConfiguration {
      */
     public function getCommandInstance() {
         
-        if(!$this->commandInstance) {
-            $this->commandInstance = new $this->commandClassName();
-        }
+        return $this->commandInstance;
+    }
+    
+    /**
+     * 
+     * @return Command
+     */
+    public function createCommandInstance() {
+        $this->commandInstance = new $this->commandClassName();
         
         return $this->commandInstance;
     }

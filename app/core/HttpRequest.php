@@ -23,9 +23,14 @@ class HttpRequest {
     /**
      * @return string
      */
-    public function getParameter($name) {
+    public function getParameter($name, $stripTags = true) {
         if ($this->issetParameter($name)) {
-            return $this->parameters[$name];
+            if($stripTags) {
+                return strip_tags($this->parameters[$name]);
+            }
+            else {
+                return $this->parameters[$name];
+            }
         } else {
             return null;
         }

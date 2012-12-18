@@ -8,7 +8,7 @@ interface I18nHandler {
     
     public function supportedLanguages();
     
-    public function getText($key, $lang, $default);
+    public function getText($key, $default);
     
 }
 

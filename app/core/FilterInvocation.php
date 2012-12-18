@@ -36,7 +36,7 @@ class FilterInvocation {
             $nextFilter->execute($invocation, $invocation->frontController->getHttpRequest(), $invocation->frontController->getHttpResponse(), $invocation->frontController->getCommandConfig());
         }
         else {
-            $invocation->frontController->execteCommand();
+            $invocation->frontController->executeCommand();
         }
     }
 }

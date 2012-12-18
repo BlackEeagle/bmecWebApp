@@ -100,14 +100,6 @@ class GuiMessageHandler {
 
         return implode("\", \"", $fieldNames);
     }
-
-    /**
-     * @return boolean
-     */
-    public function hasValidationErrors() {
-        return $this->hasGuiMessageOfType(GuiMessageType::FIELD_VALIDATION_ERROR) || $this->hasGuiMessageOfType(GuiMessageType::VALIDATION_ERROR);
-    }
-
 }
 
 ?>

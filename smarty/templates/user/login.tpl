@@ -11,7 +11,7 @@
         <div class="control-group">
             <label class="control-label" for="inputUsername">{i18nLabel key="bmecWebApp.login.username"}</label>
             <div class="controls">
-                <input type="text" id="inputUsername" name="username" placeholder="{i18nLabel key="bmecWebApp.login.username"}" value="{$username}" />
+                {htmlInputText id="inputUsername" placeholderKey="bmecWebApp.login.username" name="username"}
             </div>
         </div>
         <div class="control-group">
