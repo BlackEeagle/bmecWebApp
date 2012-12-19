@@ -21,75 +21,75 @@ class Vorbild implements Model {
         
     }
 
-    public function getVorbildId() {
+    public function getId() {
         return $this->vorbild_id;
     }
 
-    public function setVorbildId($vorbild_id) {
+    public function setId($vorbild_id) {
         $this->vorbild_id = $vorbild_id;
     }
 
-    public function getVorbildEvuId() {
+    public function getEvuId() {
         return $this->vorbild_evu_id;
     }
 
-    public function setVorbildEvuId($vorbild_evu_id) {
+    public function setEvuId($vorbild_evu_id) {
         $this->vorbild_evu_id = $vorbild_evu_id;
     }
 
-    public function getVorbildGattungId() {
+    public function getGattungId() {
         return $this->vorbild_gattung_id;
     }
 
-    public function setVorbildGattungId($vorbild_gattung_id) {
+    public function setGattungId($vorbild_gattung_id) {
         $this->vorbild_gattung_id = $vorbild_gattung_id;
     }
 
-    public function getVorbildTyp() {
+    public function getTyp() {
         return $this->vorbild_typ;
     }
 
-    public function setVorbildTyp($vorbild_typ) {
+    public function setTyp($vorbild_typ) {
         $this->vorbild_typ = $vorbild_typ;
     }
 
-    public function getVorbildSerie() {
+    public function getSerie() {
         return $this->vorbild_serie;
     }
 
-    public function setVorbildSerie($vorbild_serie) {
+    public function setSerie($vorbild_serie) {
         $this->vorbild_serie = $vorbild_serie;
     }
 
-    public function getVorbildFarbe() {
+    public function getFarbe() {
         return $this->vorbild_farbe;
     }
 
-    public function setVorbildFarbe($vorbild_farbe) {
+    public function setFarbe($vorbild_farbe) {
         $this->vorbild_farbe = $vorbild_farbe;
     }
 
-    public function getVorbildGeschwindigkeit() {
+    public function getGeschwindigkeit() {
         return $this->vorbild_geschwindigkeit;
     }
 
-    public function setVorbildGeschwindigkeit($vorbild_geschwindigkeit) {
+    public function setGeschwindigkeit($vorbild_geschwindigkeit) {
         $this->vorbild_geschwindigkeit = $vorbild_geschwindigkeit;
     }
 
-    public function getVorbildAchsen() {
+    public function getAchsen() {
         return $this->vorbild_achsen;
     }
 
-    public function setVorbildAchsen($vorbild_achsen) {
+    public function setAchsen($vorbild_achsen) {
         $this->vorbild_achsen = $vorbild_achsen;
     }
 
-    public function getVorbildEpocheId() {
+    public function getEpocheId() {
         return $this->vorbild_epoche_id;
     }
 
-    public function setVorbildEpocheId($vorbild_epoche_id) {
+    public function setEpocheId($vorbild_epoche_id) {
         $this->vorbild_epoche_id = $vorbild_epoche_id;
     }
 

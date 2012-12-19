@@ -43,9 +43,40 @@ class FzDbVorbildCommand extends FzDbCommand {
 
         $this->prepareSelects();
 
-        $this->smartyHelper->assignEmpty(array("evu", "gattung", "typ", "serie", "farbe", "geschwindigkeit", "achsen", "epoche"));
-        
+        $this->smartyHelper->assignEmpty(array("id", "evu", "gattung", "typ", "serie", "farbe", "geschwindigkeit", "achsen", "epoche"));
+
         $this->response->setSmartyTemplateName("fahrzeugInventar/vorbildEdit.tpl");
+    }
+
+    public function edit() {
+
+        if ($this->validationService->isPositiveInteger("id") === false) {
+            $guiMsg = GuiMessageHandler::getInstance();
+            $guiMsg->addGuiMessage(new GuiMessage(GuiMessageType::VALIDATION_ERROR, "fzInventar.vorbild.validation.noId"));
+        }
+
+        if ($this->validationService->hasValidationErrors() === false) {
+            $this->prepareSelects();
+
+            $vorbildService = VorbildService::getInstance();
+            $vorbild = $vorbildService->getById($this->request->getParameter("id"));
+
+            if ($vorbild !== null) {
+                $this->response->getSmarty()->assign("id", $vorbild->getId());
+                $this->response->getSmarty()->assign("evu", $vorbild->getEvuId());
+                $this->response->getSmarty()->assign("gattung", $vorbild->getGattungId());
+                $this->response->getSmarty()->assign("typ", $vorbild->getTyp());
+                $this->response->getSmarty()->assign("serie", $vorbild->getSerie());
+                $this->response->getSmarty()->assign("farbe", $vorbild->getFarbe());
+                $this->response->getSmarty()->assign("geschwindigkeit", $vorbild->getGeschwindigkeit());
+                $this->response->getSmarty()->assign("achsen", $vorbild->getAchsen());
+                $this->response->getSmarty()->assign("epoche", $vorbild->getEpocheId());
+            }
+
+            $this->response->setSmartyTemplateName("fahrzeugInventar/vorbildEdit.tpl");
+        } else {
+// redirect to list
+        }
     }
 
     public function save() {
@@ -63,8 +94,22 @@ class FzDbVorbildCommand extends FzDbCommand {
         /* -
          * SAVE
          */
-        
-        
+
+        if ($this->validationService->hasValidationErrors() === false) {
+            $vorbild = new Vorbild();
+            $vorbild->setId($this->request->getParameter("id"));
+            $vorbild->setEvuId($this->request->getParameter("evu"));
+            $vorbild->setGattungId($this->request->getParameter("gattung"));
+            $vorbild->setTyp($this->request->getParameter("typ"));
+            $vorbild->setSerie($this->request->getParameter("serie"));
+            $vorbild->setFarbe($this->request->getParameter("farbe"));
+            $vorbild->setGeschwindigkeit($this->request->getParameter("geschwindigkeit"));
+            $vorbild->setAchsen($this->request->getParameter("achsen"));
+            $vorbild->setEpocheId($this->request->getParameter("epoche"));
+
+            $vorbildService = VorbildService::getInstance();
+            $vorbildService->save($vorbild);
+        }
 
         /* -
          * RESPONSE
@@ -72,15 +117,24 @@ class FzDbVorbildCommand extends FzDbCommand {
 
         if ($this->validationService->hasValidationErrors()) {
             $this->prepareSelects();
-            
-            $this->smartyHelper->assignRequestParams(array("evu", "gattung", "typ", "serie", "farbe", "geschwindigkeit", "achsen", "epoche"));
-            
+
+            $this->smartyHelper->assignRequestParams(array("id", "evu", "gattung", "typ", "serie", "farbe", "geschwindigkeit", "achsen", "epoche"));
+
             $this->response->setSmartyTemplateName("fahrzeugInventar/vorbildEdit.tpl");
         } else {
-            
+
+            $this->response->addHeader("Location", "?cmd=8&id=" . $vorbild->getId());
         }
     }
 
-}
+    public function listAll() {
+        
+        $vorbildService = VorbildService::getInstance();
+        $vorbilder = $vorbildService->getAll();
+        
+        $this->response->getSmarty()->assign("vorbilder", $vorbilder);
+        $this->response->setSmartyTemplateName("fahrzeugInventar/vorbildList.tpl");
+    }
 
+}
 ?>

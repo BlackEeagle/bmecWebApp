@@ -63,7 +63,7 @@ class ValidationService {
      * @param string $paramName
      * @return boolean
      */
-    private function isPositiveInteger($paramName) {
+    public function isPositiveInteger($paramName) {
         return ($this->isInteger($paramName) && $this->request->getParameter($paramName) > 0);
     }
     

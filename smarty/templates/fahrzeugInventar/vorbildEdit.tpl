@@ -6,7 +6,7 @@
 <fieldset>
     <legend>{i18nLabel key="fzInventar.vorbild.title"}</legend>
     <form class="form-horizontal" action="?cmd=7" method="post">
-        <inpu type="hidden" name="id" value="" />
+        <input type="hidden" name="id" value="{$id}" />
         <div class="row-fluid">
             <div class="span6">
                 <div class="control-group">

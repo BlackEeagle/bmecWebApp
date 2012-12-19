@@ -22,7 +22,9 @@ class CommandConfigurationHandler {
             // FzDb
             new CommandConfiguration(5, "FzDbWelcomeCommand", "welcome"),
             new CommandConfiguration(6, "FzDbVorbildCommand", "blank"),
-            new CommandConfiguration(7, "FzDbVorbildCommand", "save")
+            new CommandConfiguration(7, "FzDbVorbildCommand", "save"),
+            new CommandConfiguration(8, "FzDbVorbildCommand", "edit"),
+            new CommandConfiguration(9, "FzDbVorbildCommand", "listAll")
         ];
     }
 

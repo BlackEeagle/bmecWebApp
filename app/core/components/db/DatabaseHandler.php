@@ -9,6 +9,9 @@ class DatabaseHandler {
 
     private static $instance = null;
     
+    /**
+     * @var PDO 
+     */
     private $dbHandler;
     private $logger;
 
