@@ -5,7 +5,7 @@
 {block name="mainContent"}
 <fieldset>
     <legend>{i18nLabel key="fzInventar.vorbild.alleVorbilder"}</legend>
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>{i18nLabel key="fzInventar.vorbild.typ"}</th>
@@ -14,16 +14,24 @@
                 <th>{i18nLabel key="fzInventar.vorbild.epoche"}</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="vorbildRows">
             {foreach $vorbilder as $vorbild}
-                <tr>
+                <tr data-id="{$vorbild->getId()}">
                     <td>{$vorbild->getTyp()}</td>
                     <td>{$vorbild->getSerie()}</td>
-                    <td>{$vorbild->getEvuId()}</td>
-                    <td>{$vorbild->getEpocheId()}</td>
+                    <td>{$evuMap[$vorbild->getEvuId()]->getName()}</td>
+                    <td>{$epochenMap[$vorbild->getEpocheId()]->getName()}</td>
                 </tr>
             {/foreach}
         </tbody>
     </table>
 </fieldset>
+{/block}
+
+{block name="script" append}
+<script type="text/javascript">
+    $("#vorbildRows tr").click(function() {
+        location.href = "?cmd=8&id=" + $(this).data("id");
+    });
+</script>
 {/block}

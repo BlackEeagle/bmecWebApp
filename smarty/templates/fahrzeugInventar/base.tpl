@@ -8,7 +8,7 @@
 
 {block name="title"}{i18nLabel key="fzInventar.topNavigation"}{/block}
 
-{block name="script"}
+{block name="script" append}
 <script type="text/javascript" src="js/fahrzeugInventar.js"></script>
 <script type="text/javascript">
     $(function() {

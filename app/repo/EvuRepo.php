@@ -15,12 +15,25 @@ class EvuRepo extends AbstractRepo {
         $sql = "SELECT evu.evu_id, evu.evu_name FROM bmec_fzdb_evu evu ORDER BY evu.evu_name";
         
         $stmt = $this->dbHandler->createSelectStatement();
-        $stmt->prepare($sql);
         
-        $result = $stmt->execute(null, "Evu");
+        $result = $stmt->execute($sql, "Evu");
         
         return $result;
-    }    
+    }
+    
+    /**
+     * @param array $ids
+     * @return array
+     */
+    public function findByIds(array $ids) {
+        
+        $sql = "SELECT e.evu_id, e.evu_name FROM bmec_fzdb_evu e WHERE e.evu_id IN (:ids)";
+        
+        $stmt = $this->dbHandler->createSelectStatement();
+        
+        $stmt->addParamList("ids", $ids);
+        return $stmt->execute($sql, "Evu");
+    }
 }
 
 ?>

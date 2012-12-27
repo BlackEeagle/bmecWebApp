@@ -15,9 +15,8 @@ class GattungRepo extends AbstractRepo {
         $sql = "SELECT g.gattung_id, g.gattung_name FROM bmec_fzdb_gattung g ORDER BY g.gattung_name";
         
         $stmt = $this->dbHandler->createSelectStatement();
-        $stmt->prepare($sql);
         
-        $result = $stmt->execute(null, "Gattung");
+        $result = $stmt->execute($sql, "Gattung");
         return $result;
     }
     

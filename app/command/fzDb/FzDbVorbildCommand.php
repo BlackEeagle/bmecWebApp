@@ -123,18 +123,34 @@ class FzDbVorbildCommand extends FzDbCommand {
             $this->response->setSmartyTemplateName("fahrzeugInventar/vorbildEdit.tpl");
         } else {
 
-            $this->response->addHeader("Location", "?cmd=8&id=" . $vorbild->getId());
+            $this->response->addHeader("Location", "?cmd=9");
         }
     }
 
     public function listAll() {
-        
+
         $vorbildService = VorbildService::getInstance();
-        $vorbilder = $vorbildService->getAll();
+        $objs = $vorbildService->getAll();
+
+        $epochenMap = array();
+
+        foreach ($objs["epochen"] as $epoche) {
+            $epochenMap[$epoche->getId()] = $epoche;
+        }
         
-        $this->response->getSmarty()->assign("vorbilder", $vorbilder);
+        $evuMap = array();
+        
+        foreach($objs["evus"] as $evu) {
+            $evuMap[$evu->getId()] = $evu;
+        }
+
+        $this->response->getSmarty()->assign("vorbilder", $objs["vorbilder"]);
+        $this->response->getSmarty()->assign("epochenMap", $epochenMap);
+        $this->response->getSmarty()->assign("evuMap", $evuMap);
+        
         $this->response->setSmartyTemplateName("fahrzeugInventar/vorbildList.tpl");
     }
 
 }
+
 ?>

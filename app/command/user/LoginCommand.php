@@ -38,6 +38,7 @@ class LoginCommand extends AbstractCommand {
          * LOGIN
          */
 
+
         if ($this->validationService->hasValidationErrors() === false) {
             $secService = SecurityService::getInstance();
 
@@ -53,7 +54,7 @@ class LoginCommand extends AbstractCommand {
          * RESPONSE
          */
 
-        if ($msgHandler->hasValidationErrors() === false) {
+        if ($this->validationService->hasValidationErrors() === false) {
             $this->response->addHeader("Location", "?cmd=1");
         } else {
             $this->navigationBean = new NavigationBean(NavigationHelper::USER_LOGIN);

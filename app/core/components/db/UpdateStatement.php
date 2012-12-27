@@ -7,10 +7,12 @@
  */
 class UpdateStatement extends AbstractStatement {
     
-    public function execute(array $params = null) {
+    public function execute($sql) {
 
+        $this->prepare($sql);
+        
         try {
-            $this->executeStatement($params);
+            $this->executeStatement();
 
             $affectedRows = $this->statement->rowCount();
         } catch (PDOException $e) {

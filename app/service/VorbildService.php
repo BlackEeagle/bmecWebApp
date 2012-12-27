@@ -73,7 +73,23 @@ class VorbildService {
     public function getAll() {
 
         $repo = new VorbildRepo();
-        return $repo->findAll();
+        $vorbilder =  $repo->findAll();
+        
+        $epocheIds = array();
+        $evuIds = array();
+        
+        foreach ($vorbilder as $vorbild) {
+            $epocheIds[] = $vorbild->getEpocheId();
+            $evuIds[] = $vorbild->getEvuId();
+        }
+        
+        $epocheRepo = new EpocheRepo();
+        $epochen = $epocheRepo->findByIds($epocheIds);
+        
+        $evuRepo = new EvuRepo();
+        $evus = $evuRepo->findByIds($evuIds);
+        
+        return array("vorbilder" => $vorbilder, "epochen" => $epochen, "evus" => $evus);
     }
 
 }
